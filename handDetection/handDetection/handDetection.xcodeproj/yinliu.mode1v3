@@ -296,7 +296,7 @@
 							<real>186</real>
 						</array>
 						<key>RubberWindowFrame</key>
-						<string>393 147 1116 631 0 0 1280 778 </string>
+						<string>164 147 1116 631 0 0 1280 778 </string>
 					</dict>
 					<key>Module</key>
 					<string>PBXSmartGroupTreeModule</string>
@@ -326,12 +326,12 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>00DCE6AE14FDB87600E58D0A</string>
+										<string>005D18071504264800D2F240</string>
 										<key>history</key>
 										<array>
-											<string>00E8F55114FD43450020D54D</string>
-											<string>00DCE6AC14FDB87600E58D0A</string>
-											<string>00DCE6AD14FDB87600E58D0A</string>
+											<string>00DCE78914FDD88C00E58D0A</string>
+											<string>00DCE78A14FDD88C00E58D0A</string>
+											<string>008E31FD14FEDAF90013B8CB</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -345,7 +345,7 @@
 								<key>Frame</key>
 								<string>{{0, 0}, {908, 585}}</string>
 								<key>RubberWindowFrame</key>
-								<string>393 147 1116 631 0 0 1280 778 </string>
+								<string>164 147 1116 631 0 0 1280 778 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
@@ -365,7 +365,7 @@
 								<key>Frame</key>
 								<string>{{0, 590}, {908, 0}}</string>
 								<key>RubberWindowFrame</key>
-								<string>393 147 1116 631 0 0 1280 778 </string>
+								<string>164 147 1116 631 0 0 1280 778 </string>
 							</dict>
 							<key>Module</key>
 							<string>XCDetailModule</string>
@@ -389,9 +389,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>00DCE6AF14FDB87600E58D0A</string>
+				<string>005D18081504264800D2F240</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>00DCE6B014FDB87600E58D0A</string>
+				<string>005D18091504264800D2F240</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -529,15 +529,11 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>00DCE6B114FDB87600E58D0A</string>
-		<string>00DCE6B214FDB87600E58D0A</string>
-		<string>1C78EAAD065D492600B07095</string>
-		<string>1CD10A99069EF8BA00B06720</string>
 		<string>000717D414BF732D00688C26</string>
 		<string>/Users/yinliu/Documents/openFrameworks/faceBank_yin/handDetection/handDetection/handDetection.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
-	<string>393 147 1116 631 0 0 1280 778 </string>
+	<string>164 147 1116 631 0 0 1280 778 </string>
 	<key>WindowToolsV3</key>
 	<array>
 		<dict>
@@ -614,7 +610,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>000717D414BF732D00688C26</string>
-				<string>00DCE6A414FDB87100E58D0A</string>
+				<string>005D180A1504264800D2F240</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>

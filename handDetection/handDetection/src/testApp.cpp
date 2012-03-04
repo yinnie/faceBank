@@ -77,7 +77,7 @@ void testApp::update(){
 			    else if (contourFinder.blobs[i].centroid.x > border) {
 					leftBowl= false;
 					circleColor2 = 255;
-					cout << rightBowl<<endl;
+					cout << leftBowl<<endl;
 				}
 			}
 		}
