@@ -15,9 +15,11 @@ void testApp::setup() {
 	posX=ofGetWindowWidth()/2;
 	posY=ofGetWindowHeight()/2;
 	
-	imageCounter =1;
+	imageCounter =4;
 	imgID=1;
-	
+	substitute = false;
+	resetting = true;
+	savedtime =0;
 	
 	//face tracker on source
 	srcTracker.setup();
@@ -32,6 +34,11 @@ void testApp::setup() {
 	srcImg.loadImage("face.jpeg");
     srcTracker.update(toCv(srcImg));
     srcPoints = srcTracker.getImagePoints();
+	
+	img1.loadImage(ofToString(imageCounter-2) + ".png");
+	img2.loadImage(ofToString(imageCounter-3) + ".png");
+	img3.loadImage(ofToString(imageCounter-4) + ".png");
+	
 	
 	/*
 	faces.allowExt("jpg");
@@ -54,6 +61,24 @@ void testApp::update() {
 		rotationMatrix = camTracker.getRotationMatrix();
 	}
 	
+	/*
+	if (!camTracker.getFound() && substitute && resetting) {
+	    savedtime =ofGetElapsedTimeMillis();
+		resetting = false;
+		cout << savedtime << endl;
+	}
+
+		int timePassed = ofGetElapsedTimeMillis()-savedtime;
+		//cout << timePassed <<endl;
+
+		if (timePassed >= 5000) {
+			substitute = false;
+			resetting = true;
+		}
+	 
+	 //ofGetElapsedTimeMicros()...   
+*/
+	
 }
 
 void testApp::draw() {
@@ -61,9 +86,17 @@ void testApp::draw() {
 	cam.draw(0, 0);
 	ofDrawBitmapString(ofToString((int) ofGetFrameRate()), 10, 20);
 	
-	srcImg.draw(0,0, 100,100); //draw srcimg thumbnail
 	
-	if(camTracker.getFound()) {
+	srcImg.draw(0,0, 100,100); //draw srcimg thumbnail
+	//srcImg.draw
+		
+	img1.draw(0,100,100,100);
+	img2.draw(0,200,100,100);
+	img3.draw(0,300,100,100);
+	
+
+	
+	if(camTracker.getFound() && substitute ) {
 		
 		ofMesh camMesh = camTracker.getImageMesh();
 				
@@ -115,7 +148,9 @@ void testApp::draw() {
 		posY = 400; 
 		posX = 50;	
 	}
-		
+    
+	
+	
 	/* distort the mouth 
 	ofSetLineWidth(1);
 	tracker.draw();
@@ -151,8 +186,9 @@ void testApp::keyPressed(int key) {
 			posY =0;
 			break;
 		case 'l':
-			
-		    srcImg.loadImage(ofToString(imgID) + ".png");
+			substitute= true;
+		    srcImg.loadImage(ofToString(imageCounter-1) + ".png");
+						
 			//cout << imageCounter;
 			srcTracker.update(toCv(srcImg));
 			srcPoints = srcTracker.getImagePoints();
@@ -162,6 +198,12 @@ void testApp::keyPressed(int key) {
 		case 's':
 		    srcImg.grabScreen(200,0,(ofGetWindowWidth()-200),ofGetWindowHeight());
 			srcImg.saveImage(ofToString(imageCounter) + ".png");
+			img1.loadImage(ofToString(imageCounter-2) + ".png");
+			img2.loadImage(ofToString(imageCounter-3) + ".png");
+			img3.loadImage(ofToString(imageCounter-4) + ".png");
+			
+			cout<<imageCounter<<" is the counter "<<endl;
+			
 			imageCounter ++;
 			break;
 		case ' ':
@@ -181,11 +223,11 @@ void testApp::keyPressed(int key) {
 void testApp :: mouseMoved(int mouseX, int mouseY) {
 	if (mouseX < ofGetWindowWidth()/2) {
 		imgID = imageCounter-1;
-		cout << imgID;
+		//cout << imgID;
 	}
 	else if (mouseX >= ofGetWindowWidth()/2) {
 		imgID = imageCounter-2;
-		cout << imgID;
+		//cout << imgID;
 	}
 }
 /*

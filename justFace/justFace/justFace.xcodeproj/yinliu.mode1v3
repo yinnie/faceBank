@@ -296,7 +296,7 @@
 							<real>158</real>
 						</array>
 						<key>RubberWindowFrame</key>
-						<string>99 97 1086 665 0 0 1280 778 </string>
+						<string>224 73 1086 665 0 0 1280 778 </string>
 					</dict>
 					<key>Module</key>
 					<string>PBXSmartGroupTreeModule</string>
@@ -326,12 +326,12 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>005D17E7150425CB00D2F240</string>
+										<string>005D18A615044A5A00D2F240</string>
 										<key>history</key>
 										<array>
 											<string>008E324D14FEE1540013B8CB</string>
-											<string>008E327B14FEE9BC0013B8CB</string>
-											<string>004BCC37150333D1001FBE5D</string>
+											<string>005D18851504440900D2F240</string>
+											<string>005D18861504440900D2F240</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -345,7 +345,7 @@
 								<key>Frame</key>
 								<string>{{0, 0}, {906, 619}}</string>
 								<key>RubberWindowFrame</key>
-								<string>99 97 1086 665 0 0 1280 778 </string>
+								<string>224 73 1086 665 0 0 1280 778 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
@@ -365,7 +365,7 @@
 								<key>Frame</key>
 								<string>{{0, 624}, {906, 0}}</string>
 								<key>RubberWindowFrame</key>
-								<string>99 97 1086 665 0 0 1280 778 </string>
+								<string>224 73 1086 665 0 0 1280 778 </string>
 							</dict>
 							<key>Module</key>
 							<string>XCDetailModule</string>
@@ -529,16 +529,16 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>005D17F2150425CB00D2F240</string>
+		<string>005D18A715044A5A00D2F240</string>
 		<string>005D17F3150425CB00D2F240</string>
 		<string>005D17F4150425CB00D2F240</string>
-		<string>1C78EAAD065D492600B07095</string>
 		<string>1CD10A99069EF8BA00B06720</string>
 		<string>000CCCD614E32340002988AF</string>
+		<string>1C78EAAD065D492600B07095</string>
 		<string>/Users/yinliu/Documents/openFrameworks/faceBank_yin/justFace/justFace/justFace.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
-	<string>99 97 1086 665 0 0 1280 778 </string>
+	<string>224 73 1086 665 0 0 1280 778 </string>
 	<key>WindowToolsV3</key>
 	<array>
 		<dict>
@@ -870,6 +870,8 @@
 					<key>Dock</key>
 					<array>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -882,7 +884,7 @@
 								<key>Frame</key>
 								<string>{{0, 0}, {650, 209}}</string>
 								<key>RubberWindowFrame</key>
-								<string>630 454 650 250 0 0 1280 778 </string>
+								<string>697 528 650 250 0 0 1280 778 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXDebugCLIModule</string>
@@ -911,11 +913,11 @@
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.consoleV3</string>
 			<key>WindowString</key>
-			<string>630 454 650 250 0 0 1280 778 </string>
+			<string>697 528 650 250 0 0 1280 778 </string>
 			<key>WindowToolGUID</key>
 			<string>1C78EAAD065D492600B07095</string>
 			<key>WindowToolIsVisible</key>
-			<false/>
+			<true/>
 		</dict>
 		<dict>
 			<key>Identifier</key>

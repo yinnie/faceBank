@@ -35,6 +35,13 @@ public:
 	float scale;
 	ofVec3f orientation;
 	ofMatrix4x4 rotationMatrix;
+	bool substitute;
+	int savedtime;
+	bool resetting;
+	
+	ofImage img1, img2, img3;
+	
+	
 	
 	//handDetection
 #ifdef _USE_LIVE_VIDEO
