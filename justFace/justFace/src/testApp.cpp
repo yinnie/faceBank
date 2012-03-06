@@ -6,7 +6,7 @@ void testApp::setup() {
 	ofSetVerticalSync(true);
 	ofSetDrawBitmapMode(OF_BITMAPMODE_MODEL_BILLBOARD);
 	cam.listDevices();
-	cam.setDeviceID(5);
+	cam.setDeviceID(6);
 	cam.initGrabber(640, 480);
 	ofEnableAlphaBlending();
 	
@@ -18,9 +18,10 @@ void testApp::setup() {
 	imageCounter =4;
 	imgID=1;
 	substitute = false;
-	resetting = true;
+	currentFound = true;
+	lastFound = true;
 	savedtime =0;
-	
+	currentTime =0;
 	//face tracker on source
 	srcTracker.setup();
 	srcTracker.setRescale(.5);
@@ -61,24 +62,25 @@ void testApp::update() {
 		rotationMatrix = camTracker.getRotationMatrix();
 	}
 	
-	/*
+	currenTime = ofGetElapsedTimeMillis()/1000;
+	
 	if (!camTracker.getFound() && substitute && resetting) {
-	    savedtime =ofGetElapsedTimeMillis();
+		
 		resetting = false;
-		cout << savedtime << endl;
-	}
 
-		int timePassed = ofGetElapsedTimeMillis()-savedtime;
+		int timePassed = currentTime-savedtime;
 		//cout << timePassed <<endl;
 
-		if (timePassed >= 5000) {
+		if (timePassed >= 5) {
 			substitute = false;
 			resetting = true;
+			savedtime=currentTime;
 		}
 	 
 	 //ofGetElapsedTimeMicros()...   
-*/
+
 	
+		
 }
 
 void testApp::draw() {
@@ -93,8 +95,6 @@ void testApp::draw() {
 	img1.draw(0,100,100,100);
 	img2.draw(0,200,100,100);
 	img3.draw(0,300,100,100);
-	
-
 	
 	if(camTracker.getFound() && substitute ) {
 		
@@ -149,8 +149,7 @@ void testApp::draw() {
 		posX = 50;	
 	}
     
-	
-	
+
 	/* distort the mouth 
 	ofSetLineWidth(1);
 	tracker.draw();

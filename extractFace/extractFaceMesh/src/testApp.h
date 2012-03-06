@@ -29,11 +29,14 @@ public:
 	ofVec2f camPosition;
 	
 	int posX, posY;
-	int imgID;
+
 	
 	float scale;
 	ofVec3f orientation;
 	ofMatrix4x4 rotationMatrix;
+	bool substitute;
+	
+	ofImage img1, img2;
 	
 	//handDetection
 #ifdef _USE_LIVE_VIDEO

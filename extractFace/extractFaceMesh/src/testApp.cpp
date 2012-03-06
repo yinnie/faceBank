@@ -6,7 +6,7 @@ void testApp::setup() {
 	ofSetVerticalSync(true);
 	ofSetDrawBitmapMode(OF_BITMAPMODE_MODEL_BILLBOARD);
 	cam.listDevices();
-	cam.setDeviceID(5);
+	cam.setDeviceID(6);
 	cam.initGrabber(640, 480);
 	ofEnableAlphaBlending();
 	
@@ -15,9 +15,8 @@ void testApp::setup() {
 	posX=ofGetWindowWidth()/2;
 	posY=ofGetWindowHeight()/2;
 	
-	imageCounter =1;
-	imgID=1;
-	
+	imageCounter =2;
+	substitute= false;
 	
 	//face tracker on source
 	srcTracker.setup();
@@ -28,10 +27,12 @@ void testApp::setup() {
     srcTracker.setAttempts(2);
     srcTracker.setClamp(4);
     srcTracker.setTolerance(.01);
-    
-	srcImg.loadImage("face.jpeg");
+    img1.loadImage(ofToString(imageCounter) + ".png");
+	img2.loadImage(ofToString(imageCounter-1) + ".png");
+	srcImg=img2;
     srcTracker.update(toCv(srcImg));
     srcPoints = srcTracker.getImagePoints();
+		
 	//************************************
 #ifdef _USE_LIVE_VIDEO
 	vidGrabber.setVerbose(true);
@@ -53,7 +54,7 @@ void testApp::setup() {
 	rightBowl = false;
 	circleColor1 = 0;
 	circleColor2=0;
-	border = 190;
+	border = 220;
 
 	
 }
@@ -111,13 +112,13 @@ void testApp::update() {
 			if(contourFinder.nBlobs>0) {
 				if (contourFinder.blobs[i].centroid.x< border) {
 					leftBowl = true;
-					imgID = imageCounter-1;
+					srcImg = img1;
 					circleColor1 = 255;
 					cout << leftBowl << endl;
 				}
 			    else if (contourFinder.blobs[i].centroid.x > border) {
 					leftBowl= false;
-					imgID = imageCounter-2;
+					srcImg=img2;
 					circleColor2 = 255;
 					cout << leftBowl<<endl;
 				}
@@ -133,9 +134,10 @@ void testApp::draw() {
 	cam.draw(0, 0);
 	ofDrawBitmapString(ofToString((int) ofGetFrameRate()), 10, 20);
 	
-	srcImg.draw(0,0, 100,100); //draw srcimg thumbnail
-	
-	if(camTracker.getFound()) {
+	img2.draw(0,0, 100,100); //draw srcimg thumbnail
+	img1.draw(0,100,100,100);
+		
+	if(camTracker.getFound() && substitute) {
 		
 		ofMesh camMesh = camTracker.getImageMesh();
 				
@@ -233,14 +235,14 @@ void testApp::keyPressed(int key) {
 			posY =0;
 			break;
 		case 'l':
-		    srcImg.loadImage(ofToString(imgID) + ".png");
-			//cout << imageCounter;
+			substitute = !substitute;
 			srcTracker.update(toCv(srcImg));
 			srcPoints = srcTracker.getImagePoints();
 			break;
 		case 's':
-		    srcImg.grabScreen(200,0,(ofGetWindowWidth()-200),ofGetWindowHeight());
-			srcImg.saveImage(ofToString(imageCounter) + ".png");
+		    img2.grabScreen(200,0,(ofGetWindowWidth()-200),ofGetWindowHeight());
+			img2.saveImage(ofToString(imageCounter-1) + ".png");
+			img1.loadImage(ofToString(imageCounter-2) + ".png");
 			imageCounter ++;
 			break;
 		case ' ':

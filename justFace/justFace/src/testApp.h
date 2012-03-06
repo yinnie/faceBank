@@ -37,9 +37,11 @@ public:
 	ofMatrix4x4 rotationMatrix;
 	bool substitute;
 	int savedtime;
-	bool resetting;
+	bool currentFound;
+	bool lastFound;
 	
 	ofImage img1, img2, img3;
+	int currentTime;
 	
 	
 	

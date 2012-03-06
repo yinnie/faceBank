@@ -1,0 +1,8 @@
+/Users/yinliu/Documents/openFrameworks/faceBank_yin/justFace/justFace/src/testApp.cpp: In member function 'virtual void testApp::setup()':
+/Users/yinliu/Documents/openFrameworks/faceBank_yin/justFace/justFace/src/testApp.cpp:24: error: 'currentTime' was not declared in this scope
+/Users/yinliu/Documents/openFrameworks/faceBank_yin/justFace/justFace/src/testApp.cpp: In member function 'virtual void testApp::update()':
+/Users/yinliu/Documents/openFrameworks/faceBank_yin/justFace/justFace/src/testApp.cpp:65: error: 'currenTime' was not declared in this scope
+/Users/yinliu/Documents/openFrameworks/faceBank_yin/justFace/justFace/src/testApp.cpp:67: error: 'resetting' was not declared in this scope
+/Users/yinliu/Documents/openFrameworks/faceBank_yin/justFace/justFace/src/testApp.cpp:71: error: 'currentTime' was not declared in this scope
+/Users/yinliu/Documents/openFrameworks/faceBank_yin/justFace/justFace/src/testApp.cpp:86: error: a function-definition is not allowed here before '{' token
+/Users/yinliu/Documents/openFrameworks/faceBank_yin/justFace/justFace/src/testApp.cpp:231: error: expected `}' at end of input
