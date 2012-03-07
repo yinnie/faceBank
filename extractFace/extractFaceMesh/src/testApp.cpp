@@ -17,6 +17,7 @@ void testApp::setup() {
 	
 	imageCounter =2;
 	substitute= false;
+	savedTime =0;
 	
 	//face tracker on source
 	srcTracker.setup();
@@ -60,7 +61,12 @@ void testApp::setup() {
 }
 
 void testApp::update() {
+	
+	double interval = 5;
+	
 	cam.update();
+	currentTime = ofGetElapsedTimeMillis()/1000;
+	
 	if(cam.isFrameNew()) {
 		camTracker.update(toCv(cam));
 		
@@ -69,9 +75,23 @@ void testApp::update() {
 		rotationMatrix = camTracker.getRotationMatrix();
 	}
 	
+	if(!camTracker.getFound() && substitute){
+		     cout<<"camtracker isnt found"<<endl;     
+			if(currentTime - savedTime>interval){
+			substitute=false;
+			cout<<substitute<<" is substitute "<<endl;
+		    }
+		cout<<savedTime<<" is the previous time  "<<currentTime<<"  is the current time  ";
+	}
+	
+	if (camTracker.getFound()){
+		savedTime = currentTime;
+	}
+	
+	
 	//*****************************************
-	circleColor1 = 0;
-	circleColor2=0;
+	circleColor1 = 255;
+	circleColor2=255;
 	leftBowl = false;
 	
     bool bNewFrame = false;
@@ -107,20 +127,21 @@ void testApp::update() {
 		contourFinder.findContours(grayDiff, 50, (340*240)/3, 1, true);	// find holes
 		
 		for (int i = 0; i < contourFinder.nBlobs; i++){
-			cout << contourFinder.blobs[i].centroid.x << endl;
+			//cout << contourFinder.blobs[i].centroid.x << endl;
 			
 			if(contourFinder.nBlobs>0) {
+				substitute=true;
 				if (contourFinder.blobs[i].centroid.x< border) {
 					leftBowl = true;
 					srcImg = img1;
-					circleColor1 = 255;
-					cout << leftBowl << endl;
+					circleColor1 = 0;
+					//cout << leftBowl << endl;
 				}
 			    else if (contourFinder.blobs[i].centroid.x > border) {
 					leftBowl= false;
 					srcImg=img2;
-					circleColor2 = 255;
-					cout << leftBowl<<endl;
+					circleColor2 = 0;
+					//cout << leftBowl<<endl;
 				}
 			}
 		}
@@ -131,11 +152,13 @@ void testApp::update() {
 
 void testApp::draw() {
 	ofSetColor(255);
-	cam.draw(0, 0);
+	vidGrabber.draw(1280,0, 1280,800);
+	cam.draw(0, 0,1280,800 );                                                            
+
 	ofDrawBitmapString(ofToString((int) ofGetFrameRate()), 10, 20);
 	
-	img2.draw(0,0, 100,100); //draw srcimg thumbnail
-	img1.draw(0,100,100,100);
+	img2.draw(0,0, 300,300); //draw srcimg thumbnail
+	img1.draw(0,300,300,300);
 		
 	if(camTracker.getFound() && substitute) {
 		
@@ -214,15 +237,21 @@ void testApp::draw() {
 	*/
      
 	//********************************bowls
-	ofSetColor(circleColor1,0,0);
-	ofCircle(440, 350, 40);
-	ofSetColor(circleColor2, 0,0);
-	ofCircle(580, 350, 40);
+	ofPushStyle();
+	ofSetLineWidth(3);
+	ofFill();
+	ofSetColor(circleColor1,255,255);
+	ofCircle(1600, 400, 80);
+	ofSetColor(circleColor2, 255,255);
+	ofCircle(2170, 400, 80);
+	ofPopStyle();
 	
 	//draw the blobs
 	for (int i = 0; i < contourFinder.nBlobs; i++){
         contourFinder.blobs[i].draw(300,200);
     }
+	
+	
 	
 }
 

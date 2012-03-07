@@ -37,6 +37,7 @@ public:
 	bool substitute;
 	
 	ofImage img1, img2;
+	int currentTime,savedTime;
 	
 	//handDetection
 #ifdef _USE_LIVE_VIDEO
